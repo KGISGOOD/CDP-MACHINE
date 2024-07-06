@@ -1,4 +1,4 @@
-# stock_notify
+# CDP-MACHINE
 
 ## 簡介
 
