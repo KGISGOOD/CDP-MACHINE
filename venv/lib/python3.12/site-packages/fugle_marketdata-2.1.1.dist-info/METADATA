@@ -1,0 +1,101 @@
+Metadata-Version: 2.1
+Name: fugle-marketdata
+Version: 2.1.1
+Summary: Fugle Realtime API 1.0 client library for Python
+Home-page: https://github.com/fugle-dev/fugle-realtime-py#readme
+License: MIT
+Keywords: fugle,realtime,stock
+Author: Fortuna Intelligence Co., Ltd.
+Author-email: development@fugle.tw
+Requires-Python: >=3.7,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: pyee (>=11.1.0,<12.0.0) ; python_full_version > "3.11.0"
+Requires-Dist: pyee (>=9.0.4,<10.0.0) ; python_full_version <= "3.11.0"
+Requires-Dist: requests (>=2.28.2,<3.0.0)
+Requires-Dist: websocket-client (>=1.5.1,<2.0.0)
+Project-URL: Documentation, https://developer.fugle.tw
+Project-URL: Repository, https://github.com/fugle-dev/fugle-realtime-py
+Description-Content-Type: text/markdown
+
+# Fugle MarketData
+
+> Fugle MarketData API client library for Python
+
+## Installation
+
+```sh
+$ pip install fugle-marketdata
+```
+
+## Importing
+
+```py
+from fugle_marketdata import WebSocketClient, RestClient
+
+```
+
+## Usage
+
+The library is an isomorphic Python client that supports REST API and WebSocket.
+
+### REST API
+
+```py
+
+client = RestClient(api_key = 'YOUR_API_KEY')
+stock = client.stock  # Stock REST API client
+print(stock.intraday.quote(symbol="2330"))
+```
+
+### WebSocket API
+
+```py
+from fugle_marketdata import WebSocketClient, RestClient
+
+
+def handle_message(message):
+    print(f'message: {message}')
+
+
+def handle_connect():
+    print('connected')
+
+
+def handle_disconnect(code, message):
+    print(f'disconnect: {code}, {message}')
+
+
+def handle_error(error):
+    print(f'error: {error}')
+
+
+def main():
+    client = WebSocketClient(api_key='YOUR_API_KEY')
+    stock = client.stock
+    stock.on("connect", handle_connect)
+    stock.on("message", handle_message)
+    stock.on("disconnect", handle_disconnect)
+    stock.on("error", handle_error)
+    stock.connect()
+    stock.subscribe({
+        "channel": 'trades',
+        "symbol": '2330'
+    })
+
+
+if __name__ == "__main__":
+    main()
+
+```
+
+## License
+
+[MIT](LICENSE)
+
