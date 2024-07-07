@@ -35,7 +35,11 @@
     打開 PowerShell 並運行以下命令：
     ```powershell
     cd %USERPROFILE%\Desktop
+    ```
+    ```powershell
     git clone https://github.com/KGISGOOD/CDP-MACHINE.git
+    ```
+    ```powershell
     cd CDP-MACHINE
     ```
 
@@ -64,7 +68,11 @@
     打開終端並運行以下命令：
     ```sh
     cd desktop
+    ```
+     ```sh
     git clone https://github.com/KGISGOOD/CDP-MACHINE.git
+    ```
+     ```sh
     cd CDP-MACHINE
     ```
 
