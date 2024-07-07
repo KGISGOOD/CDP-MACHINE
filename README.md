@@ -128,15 +128,14 @@
 
     如果在終端機中出現zsh segmentation fault 的錯誤，這通常表明在執行 Python 腳本時遇到了內存錯誤或系統問題。
     解決方法：
-        第一步：檢查 Python 環境和依賴:
-            再安裝一次：
-
+第一步：檢查 Python 環境和依賴:（再安裝一次）
+            
             ```
             pip3 install -r requirements.txt
             ```
 
-        第二步：執行以下命令更新 pip 和所有已安裝的庫：
-        
+第二步：執行以下命令更新 pip 和所有已安裝的庫：
+
             ```
             pip install --upgrade pip
             pip install --upgrade numpy pandas fugle-marketdata
