@@ -4,6 +4,11 @@
 
 `股票提醒` 是一個用於追蹤和通知股票價格變化的工具。通過此項目，用戶可以設置特定的股票，並在價格達到預定值時接收通知。
 
+`先行申請`
+[行情 API](https://developer.fugle.tw/docs/key/)
+[Line Notify token](https://notify-bot.line.me/zh_TW/)
+
+
 ## 目錄
 
 - [簡介](#簡介)
@@ -14,7 +19,6 @@
   - [Mac](#mac)
 - [運行項目](#運行項目)
 - [配置](#配置)
-- [許可](#許可)
 
 ## 環境要求
 
@@ -30,6 +34,7 @@
 
     打開 PowerShell 並運行以下命令：
     ```powershell
+    cd %USERPROFILE%\Desktop
     git clone https://github.com/KGISGOOD/CDP-MACHINE.git
     cd CDP-MACHINE
     ```
@@ -58,6 +63,7 @@
 
     打開終端並運行以下命令：
     ```sh
+    cd desktop
     git clone https://github.com/KGISGOOD/CDP-MACHINE.git
     cd CDP-MACHINE
     ```
@@ -107,8 +113,23 @@
 2. **運行項目**
 
     ```sh
-    python3 StockNotify.py
+    python StockNotify.py
     ```
+
+3. **常見問題**
+
+    如果在終端機中出現zsh segmentation fault 的錯誤，這通常表明在執行 Python 腳本時遇到了內存錯誤或系統問題。
+    解決方法：
+        第一步：檢查 Python 環境和依賴:
+            再安裝一次：
+            ```sh
+            pip3 install -r requirements.txt
+            ```
+        第二步：執行以下命令更新 pip 和所有已安裝的庫：
+            ```sh
+            pip install --upgrade pip
+            pip install --upgrade numpy pandas fugle-marketdata
+            ```
 
 ## 配置
 
