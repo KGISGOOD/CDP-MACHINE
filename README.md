@@ -130,11 +130,14 @@
     解決方法：
         第一步：檢查 Python 環境和依賴:
             再安裝一次：
-            ```bash
+
+            ```
             pip3 install -r requirements.txt
             ```
+
         第二步：執行以下命令更新 pip 和所有已安裝的庫：
-            ```bash
+        
+            ```
             pip install --upgrade pip
             pip install --upgrade numpy pandas fugle-marketdata
             ```
