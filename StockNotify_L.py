@@ -83,11 +83,11 @@ class StockNotifier:
         highest_price = data_dict['data'][0]['high']
         lowest_price = data_dict['data'][0]['low']
         close_price = data_dict['data'][0]['close']
-        cdp = (highest_price + lowest_price + 2 * close_price) / 4
-        ah = cdp + (highest_price - lowest_price)
-        nh = 2 * cdp - lowest_price
-        nl = 2 * cdp - highest_price
-        al = cdp - (highest_price - lowest_price)
+        cdp = round((highest_price + lowest_price + 2 * close_price) / 4, 2)
+        ah = round(cdp + (highest_price - lowest_price), 2)
+        nh = round(2 * cdp - lowest_price, 2)
+        nl = round(2 * cdp - highest_price, 2)
+        al = round(cdp - (highest_price - lowest_price), 2)
         return cdp, ah, nh, nl, al
 
     #定義 check_cdp 方法，檢查 CDP 指標並生成相應的消息。
@@ -120,13 +120,13 @@ class StockNotifier:
             f"股票代號 : {msg_stock_code}\n"
             f"{date}的CDP指標\n"
             "============================\n"
-            f"CDP: {cdp}\n"
-            f"AH: {ah}\n"
-            f"NH: {nh}\n"
-            f"NL: {nl}\n"
-            f"AL: {al}\n"
+            f"CDP: {cdp:.2f}\n"
+            f"AH: {ah:.2f}\n"
+            f"NH: {nh:.2f}\n"
+            f"NL: {nl:.2f}\n"
+            f"AL: {al:.2f}\n"
             "============================\n"
-            f"昨日收盤價: {price}\n"
+            f"昨日收盤價: {price:.2f}\n"
             "============================\n"
             f"建議: {recommendation}"
         )
@@ -195,5 +195,4 @@ if __name__ == '__main__':
 
     # 訂定單量
     notifier = StockNotifier(api_key=api_key, line_token=line_token, data_dict=historical_data_dict, stock_code_list=stock_code_list)
-    notifier.main()    
-    
+    notifier.main()
